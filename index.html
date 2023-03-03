@@ -1,12 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+
 <body>
-  
+  <div id="root"></div>
+  <script>
+    const root = document.getElementById('root');
+    const makeUl = document.createElement('ul');
+    root.appendChild(makeUl);
+    // makeUl.style.border = '1px solid black';
+    // makeUl.style.width = '100px';
+    // makeUl.style.height = '100px';
+
+    const ulstyleObject = ['width', 'height', 'border'];
+    const ulstyleValue = ['100px', '100px', '1px solid black'];
+    makeUl.style[ulstyleObject[0]] = '100px';
+    makeUl.style[ulstyleObject[1]] = '100px';
+    makeUl.style[ulstyleObject[2]] = '1px solid black';
+
+    for (let i = 0; i < ulstyleObject.length; i++) {
+      makeUl.style[ulstyleObject[i]] = ulstyleValue[i];
+    };
+
+    // 
+    function twoArrayDomstyling(firstArray, secondArray, element) {
+      for (let i = 0; i < firstArray.length; i++) {
+        element.style[firstArray[i]] = secondArray[i];
+      };
+    };
+
+    twoArrayDomstyling(ulstyleObject, ulstyleValue, makeUl);
+    
+    // 마지막 고도화 순서
+    let domStyle = {
+      firstArray: ['width', 'height', 'border'],
+      secondArray: ['100px', '100px', '1px solid black'],
+      element: root.children[0]
+    }
+
+    function oneObjectDomstyling(object) {
+      for (let i = 0; i < object.firstArray.length; i++) {
+        object.element.style[object.firstArray[i]] = object.secondArray[i];
+      };
+    }
+
+    oneObjectDomstyling(domStyle);
+  </script>
 </body>
+
 </html>
